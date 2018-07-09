@@ -49,7 +49,7 @@ _bt_unpressed(void *data, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UN
 void
 test_button(void *data EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
-   Evas_Object *win, *scr, *bx, *ic, *bt;
+   Evas_Object *win, *scr, *bx, *ic, *bt, *bt1, *bt2;
    char buf[PATH_MAX];
 
    win = elm_win_util_standard_add("buttons", "Buttons");

@@ -333,7 +333,7 @@ _eet_for_path_node(void)
    return eet;
 }
 
-struct
+static struct
 {
    Svg_Node_Type u;
    const char       *name;
@@ -354,8 +354,6 @@ struct
 };
 
 static const char *
-/* union
-   type_get() */
 _union_type_get(const void *data,
                 Eina_Bool  *unknow)
 {
@@ -372,7 +370,7 @@ _union_type_get(const void *data,
    if (unknow)
      *unknow = EINA_TRUE;
    return NULL;
-} /* _union_type_get */
+}
 
 static Eina_Bool
 _union_type_set(const char *type,
@@ -392,7 +390,7 @@ _union_type_set(const char *type,
           return EINA_TRUE;
        }
    return EINA_FALSE;
-} /* _union_type_set */
+}
 
 Eet_Data_Descriptor *
 vg_common_svg_node_eet(void)
@@ -450,7 +448,7 @@ vg_common_svg_node_eet(void)
    return _eet_vg_node;
 }
 
-void 
+void
 vg_common_svg_node_eet_destroy(void)
 {
    FREE_DESCRIPTOR(_eet_rect_node);

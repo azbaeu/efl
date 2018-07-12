@@ -1,4 +1,3 @@
-
 #include "vg_common.h"
 
 static int _evas_vg_loader_svg_log_dom = -1;

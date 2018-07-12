@@ -181,6 +181,7 @@ EVAS_EINA_STATIC_MODULE_DEFINE(engine, software_x11);
 #if !EVAS_MODULE_NO_VG_LOADERS
 EVAS_EINA_STATIC_MODULE_DEFINE(vg_loader, eet);
 EVAS_EINA_STATIC_MODULE_DEFINE(vg_loader, svg);
+EVAS_EINA_STATIC_MODULE_DEFINE(vg_loader, json);
 #endif
 
 #if !EVAS_MODULE_NO_IMAGE_LOADERS
@@ -257,6 +258,9 @@ static const struct {
 #endif
 #ifdef EVAS_STATIC_BUILD_VG_EET
   EVAS_EINA_STATIC_MODULE_USE(vg_loader, eet),
+#endif
+#ifdef EVAS_STATIC_BUILD_VG_JSON
+  EVAS_EINA_STATIC_MODULE_USE(vg_loader, json),
 #endif
 #endif
 #if !EVAS_MODULE_NO_IMAGE_LOADERS
@@ -580,6 +584,8 @@ evas_module_find_type(Evas_Module_Type type, const char *name)
           snprintf(buffer, sizeof(buffer), "%s/%s/%s/%s/%s",
                    path, type_str, name, MODULE_ARCH, EVAS_MODULE_NAME);
 
+		  printf("buffer = %s\n", buffer);
+		  fflush(stdout);
         if (!evas_file_path_is_file(buffer)) continue;
 
         en = eina_module_new(buffer);

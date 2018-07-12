@@ -268,6 +268,7 @@ _efl_canvas_vg_object_efl_file_file_set(Eo *obj, Efl_Canvas_Vg_Object_Data *pd, 
 
    old_entry = pd->vg_entry;
    evas_object_geometry_get(obj, NULL, NULL, &w, &h);
+
    pd->vg_entry = evas_cache_vg_entry_find(file, key, w, h);
    if (pd->vg_entry != old_entry)
      evas_object_change(obj, efl_data_scope_get(obj, EFL_CANVAS_OBJECT_CLASS));

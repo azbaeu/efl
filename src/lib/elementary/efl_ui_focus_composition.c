@@ -27,6 +27,8 @@ _state_apply(Eo *obj, Efl_Ui_Focus_Composition_Data *pd)
 
    //Legacy code compatibility, only update the custom chain of elements if legacy was NOT messing with it.
    if (elm_object_focus_custom_chain_get(obj)) return;
+   if (!elm_object_tree_focus_allow_get(obj)) return;
+
 
    if (pd->custom_manager)
      manager = pd->custom_manager;
@@ -176,6 +178,8 @@ _efl_ui_focus_composition_dirty(Eo *obj EINA_UNUSED, Efl_Ui_Focus_Composition_Da
 EOLIAN static void
 _efl_ui_focus_composition_efl_ui_focus_object_prepare_logical_none_recursive(Eo *obj, Efl_Ui_Focus_Composition_Data *pd EINA_UNUSED)
 {
+   if (!elm_object_tree_focus_allow_get(obj))
+
    if (pd->dirty)
      {
         efl_ui_focus_composition_prepare(obj);

@@ -4690,8 +4690,6 @@ _queue_process(Elm_Genlist_Data *sd)
 
    t0 = ecore_time_get();
 
-   if (sd->queue) efl_ui_focus_composition_prepare(sd->obj);
-
    for (n = 0; (sd->queue) && (n < ITEM_QUEUE_MAX); n++)
      {
         Elm_Gen_Item *it;
@@ -5828,9 +5826,6 @@ _elm_genlist_efl_object_constructor(Eo *obj, Elm_Genlist_Data *sd)
     efl_ui_focus_parent_provider_gen_container_set(efl_added, obj),
     efl_ui_focus_parent_provider_gen_content_item_map_set(efl_added, sd->content_item_map));
 
-   efl_ui_focus_composition_custom_manager_set(obj, obj);
-   efl_ui_focus_composition_logical_mode_set(obj, EINA_TRUE);
-
    sd->obj = obj;
 
    efl_canvas_object_type_set(obj, MY_CLASS_NAME_LEGACY);
@@ -6220,8 +6215,6 @@ _elm_genlist_item_new(Elm_Genlist_Data *sd,
      }
    it->item->expanded_depth = depth;
    sd->item_count++;
-
-   efl_ui_focus_composition_dirty(sd->obj);
 
    return it;
 }

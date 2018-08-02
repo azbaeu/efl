@@ -11,6 +11,6 @@ if [ "$DISTRO" != "" ] ; then
 else
   export PATH="/usr/local/opt/ccache/libexec:$(brew --prefix gettext)/bin:$PATH"
   pwd
-  make check-build || grep check-build Makefile
+  make check-build || grep -B5 check-build Makefile
 fi
 travis_endfold check-build

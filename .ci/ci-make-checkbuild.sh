@@ -10,6 +10,7 @@ if [ "$DISTRO" != "" ] ; then
   docker exec --env MAKEFLAGS="-j5 -rR" --env EIO_MONITOR_POLL=1 $(cat $HOME/cid) make check-build
 else
   export PATH="/usr/local/opt/ccache/libexec:$(brew --prefix gettext)/bin:$PATH"
-  make check-build
+  pwd
+  make check-build || grep check-build Makefile
 fi
 travis_endfold check-build
